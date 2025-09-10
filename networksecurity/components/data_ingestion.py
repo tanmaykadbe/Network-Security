@@ -93,7 +93,6 @@ class DataIngestion:
         dataframe = self.export_data_into_feature_store(dataframe)  # Store data in feature store
         self.split_data_as_train_test(dataframe)  # Split into train and test
 
-        # ✅ Pass all required arguments to DataIngestionArtifact
         dataingestionartifact = DataIngestionArtifact(
             feature_store_file_path=self.data_ingestion_config.feature_store_file_path,
             trained_file_path=self.data_ingestion_config.training_file_path,
@@ -102,7 +101,6 @@ class DataIngestion:
 
         return dataingestionartifact
       except Exception as e:
-        # ✅ Always pass error message and sys when raising exception
         raise NetworkSecurtityException(e, sys)
 
 
