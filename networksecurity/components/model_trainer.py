@@ -156,5 +156,3 @@ class ModelTrainer:
             
         except Exception as e:
             raise NetworkSecurtityException(e,sys)
-        
-NetworkModel
