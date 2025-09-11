@@ -23,11 +23,11 @@ MODEL_FILE_NAME = "model.pkl"
 Data ingestion related constant start with DATA_INGESTION VAR NAME
 """
 DATA_INGESTION_COLLECTION_NAME: str = "NetworkData"
-DATA_INGESTON_DATABASE_NAME: str = "Tanmay"
+DATA_INGESTION_DATABASE_NAME: str = "Tanmay"
 DATA_INGESTION_DIR_NAME: str = "data_ingestion"
 DATA_INGESTION_FEATURE_STORE_DIR: str = "feature_store"
 DATA_INGESTION_INGESTED_DIR: str = "ingested"
-DATA_INGESTION_TRAIN_TEST_SPLIT_RATION: float = 0.2
+DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO: float = 0.2
 
 """
 Data Validation related constant start with DATA_VALIDATION VAR NAME

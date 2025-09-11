@@ -25,6 +25,9 @@ from sklearn.ensemble import (
 )
 import mlflow
 
+import dagshub
+dagshub.init(repo_owner='tanmaykadbe32', repo_name='Network-Security', mlflow=True)
+
 class ModelTrainer:
     def __init__(self,model_trainer_config:ModelTrainerConfig,data_transformation_artifact:DataTransformationArtifact):
         try:
@@ -33,16 +36,21 @@ class ModelTrainer:
         except Exception as e:
             raise NetworkSecurtityException(e,sys)
         
-    def track_mlflow(self,best_model,classificationmetric):
+    def track_mlflow(self, best_model, classificationmetric):
         with mlflow.start_run():
-            f1_score=classificationmetric.f1_score
-            precision_score=classificationmetric.precision_score
-            recall_score=classificationmetric.recall_score
+            # Log metrics to MLflow/DagsHub
+            mlflow.log_metric("f1_score", classificationmetric.f1_score)
+            mlflow.log_metric("precision", classificationmetric.precision_score)
+            mlflow.log_metric("recall_score", classificationmetric.recall_score)
 
-            mlflow.log_metric("f1_score",f1_score)
-            mlflow.log_metric("precision",precision_score)
-            mlflow.log_metric("recall_score",recall_score)
-            mlflow.sklearn.log_model(best_model,"model")
+            #Save locally
+            os.makedirs("mlruns_local", exist_ok=True)
+            local_model_path = "mlruns_local/model.pkl"
+            save_object(local_model_path, obj=best_model)
+
+            #Log as artifact (DagsHub supports this)
+            mlflow.log_artifact(local_model_path, artifact_path="model")
+
             
         
         
@@ -110,8 +118,8 @@ class ModelTrainer:
         model_dir_path = os.path.dirname(self.model_trainer_config.trained_model_file_path)
         os.makedirs(model_dir_path,exist_ok=True)
 
-        Network_Model=NetworkModel(preprocessor=preprocessor,model=best_model)
-        save_object(self.model_trainer_config.trained_model_file_path,obj=NetworkModel)
+        Network_Model = NetworkModel(preprocessor=preprocessor, model=best_model)
+        save_object(self.model_trainer_config.trained_model_file_path, obj=Network_Model)
         #model pusher
         save_object("final_model/model.pkl",best_model)
         
@@ -148,3 +156,5 @@ class ModelTrainer:
             
         except Exception as e:
             raise NetworkSecurtityException(e,sys)
+        
+NetworkModel
