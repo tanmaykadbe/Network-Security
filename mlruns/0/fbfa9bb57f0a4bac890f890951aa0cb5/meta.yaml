@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Network%20security%20ML%20project/mlruns/0/fbfa9bb57f0a4bac890f890951aa0cb5/artifacts
+end_time: 1757577617634
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: fbfa9bb57f0a4bac890f890951aa0cb5
+run_name: gifted-smelt-630
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757577610235
+status: 3
+tags: []
+user_id: tanma

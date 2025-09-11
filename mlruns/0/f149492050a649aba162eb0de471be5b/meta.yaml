@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Network%20security%20ML%20project/mlruns/0/f149492050a649aba162eb0de471be5b/artifacts
+end_time: 1757577621993
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f149492050a649aba162eb0de471be5b
+run_name: stately-turtle-921
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757577617700
+status: 3
+tags: []
+user_id: tanma
