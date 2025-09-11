@@ -31,7 +31,7 @@ python main.py
 
 
 
-### 3. Real-time Prediction (FastAPI)
+### 2. Real-time Prediction (FastAPI)
 
 
 uvicorn app:app --reload
